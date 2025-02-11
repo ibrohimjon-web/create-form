@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const count = useSelector((item) => item.user.value);
   return (
     <div className="navbar">
       <h2>Logo</h2>
@@ -11,7 +13,9 @@ const Navbar = () => {
             <Link to={"/create-user"}>Create user</Link>
           </li>
           <li>
-            <Link to={"/all-users"}>All User</Link>
+            <Link to={"/all-users"}>
+              All User <sup>{count.length}</sup>
+            </Link>
           </li>
           <li>
             <Link to={"/services"}>Services</Link>

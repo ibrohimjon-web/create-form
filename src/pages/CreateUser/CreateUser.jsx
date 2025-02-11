@@ -1,12 +1,13 @@
 import { useState } from "react";
-import "./CreateUser.css";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../../redux/userSlice";
+import "./CreateUser.css";
 
 const CreateUser = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ const CreateUser = () => {
     e.preventDefault();
 
     const newData = {
+      id: new Date().getTime(),
+      gender,
       name,
       surname,
       age,
@@ -23,7 +26,7 @@ const CreateUser = () => {
     dispatch(addUsers(newData));
 
     setData([...data, newData]);
-
+    setGender("");
     setAge("");
     setName("");
     setSurname("");
@@ -64,6 +67,11 @@ const CreateUser = () => {
             id="age"
             placeholder="Yoshingizni kiriting"
           />
+          <select value={gender} onChange={(e) => setGender(e.target.value)}>
+            <option value="">-- Tanlang --</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <button>Send</button>
       </form>

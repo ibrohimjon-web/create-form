@@ -22,4 +22,4 @@ const userSlice = createSlice({
 
 export const { addUsers, removeUsers } = userSlice.actions;
 
-export default userSlice.reducer; // Bu joyda default eksport qilinyapti
+export default userSlice.reducer; 
